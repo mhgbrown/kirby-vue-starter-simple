@@ -1,0 +1,23 @@
+.field-with-headline:first-child {
+  padding-top: 0;
+}
+.field-with-headline {
+  padding-top: 3em;
+}
+.field-with-headline .hgroup span:empty::before {
+  content: '\a0';
+}
+
+.field-with-headline-numbered {
+  counter-increment: count;
+}
+.field-with-headline-numbered .hgroup span {
+  padding-left: 1.5em;
+}
+.field-with-headline-numbered .hgroup::before {
+  position: absolute;
+  content: counter(count, decimal-leading-zero);
+  left: 0;
+  color: #8dae28;
+  font-weight: 400;
+}

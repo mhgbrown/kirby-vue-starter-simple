@@ -1,0 +1,14 @@
+title: About
+
+pages: false
+files: false
+
+options:
+  template: false
+  status: false
+  url: false
+
+fields:
+  text:
+    label: Text
+    type: markdown

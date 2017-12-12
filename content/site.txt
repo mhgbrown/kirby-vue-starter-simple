@@ -1,0 +1,13 @@
+Title: Someone Somewhere
+
+----
+
+Author: Someone Somewhere
+
+----
+
+Description: This is a website
+
+----
+
+Copyright: Someone Somewhere (date: Year)

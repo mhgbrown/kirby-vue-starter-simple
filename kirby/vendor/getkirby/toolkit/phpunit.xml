@@ -1,0 +1,10 @@
+<phpunit>
+  <testsuites>
+    <testsuite name="Kirby_Toolkit">
+      <directory>test</directory>
+    </testsuite>
+  </testsuites>
+  <php>
+    <server name="SERVER_PROTOCOL" value="HTTP/1.1"/>
+  </php>
+</phpunit>

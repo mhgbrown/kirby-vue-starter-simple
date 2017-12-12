@@ -1,0 +1,12 @@
+Title: About
+
+----
+
+Text:
+
+Someone Somewhere
+Karl-Marx-Str. 142A
+12043 Berlin
+
+Website by
+(link: http://mhgbrown.is text: Morgan Brown)

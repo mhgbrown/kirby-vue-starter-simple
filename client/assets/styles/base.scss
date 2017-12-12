@@ -1,0 +1,12 @@
+$tablet: 960px;
+$phone: 480px;
+
+$font-size: 18px;
+$font-color: black;
+$line-height: 1.1;
+
+.clearfix:after {
+  display: block;
+  content: "";
+  clear: both;
+}
