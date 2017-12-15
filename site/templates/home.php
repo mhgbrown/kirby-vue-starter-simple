@@ -23,5 +23,5 @@
             window.Kirby = {}
             window.Kirby.pages = <?= json_encode($pages) ?>;
         </script>
-    <script type="text/javascript" src="/assets/js/main.b15ed40ba254b400ab4d.js"></script></body>
+    <script type="text/javascript" src="/assets/js/main.8944c2328b4114045731.js"></script></body>
 </html>

@@ -3,7 +3,7 @@
     <div class="content-container">
       <ul>
         <li v-for="project in projects">
-          <router-link :to="{ name: 'project', params: { id: projet.uid } }"></router-link>
+          <router-link :to="{ name: 'project', params: { uid: project.uid } }">{{ project.title }}</router-link>
         </li>
       </ul>
     </div>
@@ -18,9 +18,13 @@ export default {
   components: {
     'project': Project
   },
+  computed: {
+    projects () {
+      return this.$store.getters.getPagesByType('project')
+    }
+  },
   data () {
     return {
-      projects: []
     }
   }
 }

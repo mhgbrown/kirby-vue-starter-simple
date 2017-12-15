@@ -116,7 +116,8 @@ class HomeJsonApiUtil
 		return new JsonListCollection($files);
 	}
 
-	public static function pageToNode($page, $fullTree = false)
+	// FIXME passing in true here was not working! (PHP noob?)
+	public static function pageToNode($page, $fullTree = true)
 	{
 		if (empty($page)) {
 			return null;
@@ -146,6 +147,6 @@ class HomeJsonApiUtil
 
 return function($site, $pages, $page) {
     return [
-        'pages' => HomeJsonApiUtil::pageToNode($site->children(), true)->toArray()
+        'pages' => HomeJsonApiUtil::pageToNode($site->children())->toArray()
     ];
 };
