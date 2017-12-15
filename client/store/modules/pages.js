@@ -15,8 +15,7 @@ const getters = {
       return results
     }
 
-    let i = collection.length
-    while (i--) {
+    for (let i = 0; i < collection.length; i++) {
       if (collection[i].type === type) {
         results.push(collection[i])
       }
