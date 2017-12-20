@@ -25,10 +25,6 @@ export default {
     window.addEventListener('orientationchange', this.onOrientationChange, false)
     window.addEventListener('scroll', this.onScrollDebounced)
 
-    document.ontouchmove = function(event) {
-      event.preventDefault()
-    }
-
     this.onResize()
   },
   destroyed() {
