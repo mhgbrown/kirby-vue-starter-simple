@@ -5,8 +5,21 @@ const state = {
 }
 
 const getters = {
-  getFileByURL: (state, getters) => (page, url) => {
-    return page.files.find(file => file.url === url)
+  getFileByURL: (state, getters) => (url, collection = state.pages) => {
+    let i = collection.length
+    while (i--) {
+      let j = collection[i].files.length
+      while (j--) {
+        if (collection[i].files[j].url === url) {
+          return collection[i].files[j]
+        }
+      }
+
+      let targetFile = getters.getFileByURL(url, collection[i].children)
+      if (targetFile) {
+        return targetFile
+      }
+    }
   },
   getPagesByType: (state, getters) => (type, collection = state.pages) => {
     let results = []
