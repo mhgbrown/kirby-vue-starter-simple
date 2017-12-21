@@ -5,6 +5,7 @@ import * as actions from './actions'
 import * as getters from './getters'
 import plugins from './plugins'
 import pages from './modules/pages'
+import site from './modules/site'
 import app from './modules/app'
 
 const debug = process.env.NODE_ENV !== 'production'
@@ -17,7 +18,8 @@ export default new Vuex.Store({
   getters,
   modules: {
     app,
-    pages
+    pages,
+    site
   },
   strict: debug,
   plugins

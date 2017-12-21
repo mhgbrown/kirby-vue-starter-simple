@@ -19,6 +19,7 @@ export default {
   },
   beforeCreate() {
     this.$store.commit(types.RECEIVE_PAGES, { pages: window.Kirby.pages })
+    this.$store.commit(types.RECEIVE_SITE, { site: window.Kirby.site })
   },
   created () {
     window.addEventListener('resize', this.onResizeDebounced, true)

@@ -2,8 +2,8 @@
   <div class="projects">
     <div class="content-container">
       <ul>
-        <li v-for="project in projects">
-          <router-link :to="{ name: 'project', params: { uid: project.uid } }">{{ project.title }}</router-link>
+        <li v-for="subpage in subpages">
+          <router-link :to="{ name: subpage.type, params: { uid: subpage.uid } }">{{ subpage.title }}</router-link>
         </li>
       </ul>
     </div>
@@ -11,15 +11,12 @@
 </template>
 
 <script>
-import Project from './Project'
-
 export default {
   name: 'projects',
   components: {
-    'project': Project
   },
   computed: {
-    projects () {
+    subpages () {
       return this.$store.getters.getPagesByType('project')
     }
   },

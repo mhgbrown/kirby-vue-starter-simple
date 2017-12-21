@@ -147,6 +147,7 @@ class HomeJsonApiUtil
 
 return function($site, $pages, $page) {
     return [
+        'site_data' => HomeJsonApiUtil::pageToJson($site)->toArray(),
         'pages' => HomeJsonApiUtil::pageToNode($site->children())->toArray()
     ];
 };

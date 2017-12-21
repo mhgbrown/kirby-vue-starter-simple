@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
+import About from '@/components/About'
 import Project from '@/components/Project'
 import Projects from '@/components/Projects'
 
 Vue.use(Router)
 
 export default new Router({
-  base: window.location.pathname !== '/' ? window.location.pathname.replace(/\/$/, '') : '/',
   mode: 'history',
   routes: [
     {
@@ -25,6 +25,11 @@ export default new Router({
       name: 'project',
       component: Project,
       props: true
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: About
     },
     {
       path: '*',
