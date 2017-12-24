@@ -17,6 +17,8 @@ http://vuejs.org
 
 ## Usage
 
+You'll need to serve Kirby locally somehow. [MAMP](https://www.mamp.info/en/) is a possibility for this.
+
 Compile assets on the fly as you develop
 ```bash
 $ npm run dev
