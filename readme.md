@@ -17,7 +17,11 @@ http://vuejs.org
 
 ## Usage
 
+### Server
+
 You'll need to serve Kirby locally somehow. [MAMP](https://www.mamp.info/en/) is a possibility for this.
+
+### Client
 
 Compile assets on the fly as you develop
 ```bash
