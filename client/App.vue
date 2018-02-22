@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import debounce from 'lodash.debounce'
 import EventBus from './util/EventBus'
 import * as types from './store/mutation-types'
 
@@ -17,21 +16,21 @@ export default {
     return {
     }
   },
-  beforeCreate() {
+  beforeCreate () {
     this.$store.commit(types.RECEIVE_PAGES, { pages: window.Kirby.pages })
     this.$store.commit(types.RECEIVE_SITE, { site: window.Kirby.site })
   },
   created () {
-    window.addEventListener('resize', this.onResizeDebounced, true)
-    window.addEventListener('orientationchange', this.onOrientationChange, false)
-    window.addEventListener('scroll', this.onScrollDebounced)
+    window.addEventListener('resize', this.onResize, true)
+    window.addEventListener('scroll', this.onScroll)
+    window.addEventListener('orientationchange', this.onOrientationChange)
 
     this.onResize()
   },
-  destroyed() {
-    window.removeEventListener('resize', this.onResizeDebounced, true)
-    window.removeEventListener('orientationchange', this.onOrientationChange, false)
-    window.removeEventListener('scroll', this.onScrollDebounced)
+  destroyed () {
+    window.removeEventListener('resize', this.onResize, true)
+    window.removeEventListener('scroll', this.onScroll)
+    window.removeEventListener('orientationchange', this.onOrientationChange)
   },
   methods: {
     onResize (event) {
@@ -41,15 +40,9 @@ export default {
 
       EventBus.$emit('app.resize', event)
     },
-    onResizeDebounced: debounce(function(event) {
-      this.onResize(event)
-    }, 16),
-    onScroll(event) {
+    onScroll (event) {
       EventBus.$emit('app.scroll', event)
     },
-    onScrollDebounced: debounce(function(event) {
-      this.onScroll(event)
-    }, 16),
     onOrientationChange (event) {
       EventBus.$emit('app.orientationchange', event)
     }
@@ -74,10 +67,13 @@ html {
   -moz-osx-font-smoothing: grayscale;
   font-size: $font-size;
   color: $font-color;
-  line-height: $line-height;
 }
 
 body {
+  line-height: $line-height;
+}
+
+#app {
 
 }
 
@@ -109,9 +105,5 @@ img {
 
 p {
   margin-bottom: 0.5rem;
-}
-
-#app {
-
 }
 </style>

@@ -16,7 +16,7 @@
         <meta name="twitter:description" content="<?= $site->description()->html() ?>">
         <meta name="twitter:image" content="<?= $site->page('/projects')->children()->first()->image()->url() ?>">
         <title><?= $site->title()->html() ?></title>
-    <link href="/assets/css/main.66db04d5f9adc5169df52ad86c744728.css" rel="stylesheet"></head>
+    <link href="/assets/css/main.4ff32673522d4c209b7e4c721a1f4635.css" rel="stylesheet"></head>
     <body>
         <div id="app"></div>
         <script type="text/javascript">
@@ -24,5 +24,5 @@
             window.Kirby.pages = <?= json_encode($pages) ?>;
             window.Kirby.site = <?= json_encode($site_data) ?>;
         </script>
-    <script type="text/javascript" src="/assets/js/main.e1a2287946b676df1083.js"></script></body>
+    <script type="text/javascript" src="/assets/js/main.5109f552026d1ef685fe.js"></script></body>
 </html>

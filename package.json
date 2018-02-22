@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "jquery": "^3.2.1",
-    "lodash.debounce": "^4.0.8",
     "reset-css": "^2.2.0",
     "vue": "^2.5.2",
     "vue-markdown": "^2.2.4",
