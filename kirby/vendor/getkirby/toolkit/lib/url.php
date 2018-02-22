@@ -83,7 +83,7 @@ class Url {
     // to trick the url parser. It's a bit hacky but it works
     if(!static::isAbsolute($url)) $url = 'http://0.0.0.0/' . $url;
 
-    return trim(parse_url($url, PHP_URL_PATH), '/');
+    return ltrim(parse_url($url, PHP_URL_PATH), '/');
 
   }
 
@@ -168,8 +168,18 @@ class Url {
     $parts  = array_merge($defaults, $parts);
     $result = array(r(!empty($parts['scheme']), $parts['scheme'] . '://') . $parts['host'] . r(!empty($parts['port']), ':' . $parts['port']));
 
-    if(!empty($parts['fragments'])) $result[] = implode('/', $parts['fragments']);
-    if(!empty($parts['params']))    $result[] = static::paramsToString($parts['params']);
+    if(!empty($parts['fragments'])) {
+      $fragments = implode('/', $parts['fragments']);
+      
+      // prevent double slashes if params follow after the fragments
+      if(!empty($parts['params'])) $fragments = rtrim($fragments, '/');
+      
+      $result[] = $fragments;
+    }
+    
+    if(!empty($parts['params'])) {
+      $result[] = static::paramsToString($parts['params']);
+    }
 
     // make sure that URLs without any URI end with a slash after the host
     if(count($result) === 1) {
@@ -380,7 +390,8 @@ class Url {
     if(!function_exists('idn_to_utf8')) return $url;
 
     // disassemble the URL, convert the domain name and reassemble
-    $host = idn_to_utf8(static::host($url));
+    $variant = defined('INTL_IDNA_VARIANT_UTS46') ? INTL_IDNA_VARIANT_UTS46 : INTL_IDNA_VARIANT_2003;
+    $host = idn_to_utf8(static::host($url), 0, $variant);
     if($host === false) return $url;
     $url  = static::build(['host' => $host], $url);
 
@@ -400,7 +411,8 @@ class Url {
     if(!function_exists('idn_to_ascii')) return $url;
 
     // disassemble the URL, convert the domain name and reassemble
-    $host = idn_to_ascii(static::host($url));
+    $variant = defined('INTL_IDNA_VARIANT_UTS46') ? INTL_IDNA_VARIANT_UTS46 : INTL_IDNA_VARIANT_2003;
+    $host = idn_to_ascii(static::host($url), 0, $variant);
     if($host === false) return $url;
     $url  = static::build(['host' => $host], $url);
 

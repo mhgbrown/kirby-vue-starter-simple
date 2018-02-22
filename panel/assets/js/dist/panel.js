@@ -6696,6 +6696,9 @@ var Form = function(form, params) {
 
   var form = $(form);
 
+  // remove all event handlers from the form
+  form.off();
+
   var defaults = {
     focus    : false,
     returnTo : false,
@@ -6708,7 +6711,7 @@ var Form = function(form, params) {
 
   form.find('[data-focus=true]').fakefocus('input-is-focused');
 
-  // setup all field plugins  
+  // setup all field plugins
   form.find('[data-field]').each(function() {
     var el  = $(this);
     var key = el.data('field');
@@ -6717,7 +6720,7 @@ var Form = function(form, params) {
 
   // keep changes on updates to avoid data loss
   if(form.data('keep')) {
-    
+
     form.on('keep', function() {
       $.post(form.data('keep'), form.serializeObject())
     });
@@ -6728,9 +6731,9 @@ var Form = function(form, params) {
 
   }
 
-  // focus the right field  
+  // focus the right field
   if(options.focus) {
-    form.find('[autofocus]').focus();    
+    form.find('[autofocus]').focus();
   }
 
   // don't setup a form submission action
@@ -6742,7 +6745,7 @@ var Form = function(form, params) {
   form.find('.btn-addit').on('click', function() {
     // change the form action
     form.attr('action', $(this).data('action'));
-  }); 
+  });
 
   // hook up the form submission
   form.on('submit', function(e) {
@@ -6750,8 +6753,9 @@ var Form = function(form, params) {
     // auto submission can be switched off via a data attribute
     // to setup your own submission action
     if(form.data('autosubmit') == false) {
-      return false;
-    } 
+      e.preventDefault();
+      return;
+    }
 
     // submission event
     options.submit(form);
@@ -6767,7 +6771,7 @@ var Form = function(form, params) {
 
       // hide the loading indicator
       if(app) app.isLoading(false);
-    
+
       // handle redirection and replacement of data
       options.redirect(response);
 
@@ -6789,6 +6793,7 @@ var Form = function(form, params) {
   });
 
 };
+
 (function($) {
 
   $.fn.message = function() {
@@ -6824,7 +6829,7 @@ var Modal = function(app) {
     return $('.modal').length > 0;
   };
 
-  // initialize all modal events as soon 
+  // initialize all modal events as soon
   // as the modal content is loaded
   var on = function() {
 
@@ -6843,7 +6848,7 @@ var Modal = function(app) {
     content.find('.btn-cancel').on('click', function() {
       if($('.modal').length) {
         close();
-        return false;        
+        return false;
       }
     });
 
@@ -6861,10 +6866,10 @@ var Modal = function(app) {
     // setup the form
     var form = content.find('.form');
 
-    // switch to native form 
+    // switch to native form
     // submission on modal pages
     if(!isOverlay()) {
-      form.data('autosubmit', 'native');      
+      form.data('autosubmit', 'native');
     }
 
     Form(form, {
@@ -6872,16 +6877,18 @@ var Modal = function(app) {
       redirect: function(response) {
         if($.type(response) == 'object') {
           if(response.url) {
-            app.content.open(response.url);                        
+            app.content.open(response.url);
             return;
           } else if(response.content) {
             replace(response.content);
             return;
-          } 
-        } 
+          }
+        }
         window.location.reload();
       }
     });
+
+    root.trigger('setup');
 
   };
 
@@ -6909,7 +6916,7 @@ var Modal = function(app) {
     close();
 
     // switch off content events
-    // to avoid conflicts    
+    // to avoid conflicts
     app.content.off();
 
     // load the modal view
@@ -6921,7 +6928,7 @@ var Modal = function(app) {
       // add the modal to the body
       $('body').append(root);
 
-      // make sure the modal closes when 
+      // make sure the modal closes when
       // the backdrop is being clicked
       root.on('click', function() {
         close();
@@ -6964,7 +6971,7 @@ var Modal = function(app) {
 
     // switch content events back on
     app.content.on();
-    
+
   };
 
   // return the modal form element
@@ -6975,7 +6982,7 @@ var Modal = function(app) {
   var setup = function() {
 
     // init an existing modal on load
-    if(app.hasModal()) {      
+    if(app.hasModal()) {
       on();
     }
 
@@ -6983,7 +6990,7 @@ var Modal = function(app) {
 
   return {
     root: root,
-    open: open,  
+    open: open,
     close: close,
     replace: replace,
     form: form,
@@ -6991,6 +6998,7 @@ var Modal = function(app) {
   };
 
 };
+
 var Search = function() {
 
   $(document).on('click', function() {
@@ -7248,9 +7256,9 @@ var Search = function() {
     });
 
     $('[data-upload]').on('click', function() {
-      form.find('input[type=file]').trigger('click').on('change', function() {
+      form.find('input[type=file]').on('change', function() {
         upload(this.files);
-      });
+      }).trigger('click');
       return false;
     });
 

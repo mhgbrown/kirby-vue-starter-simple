@@ -35,13 +35,13 @@ use Kirby\Panel\Models\Page\Blueprint as PageBlueprint;
 
 class Panel {
 
-  static public $version = '2.5.6';
+  static public $version = '2.5.8';
 
   // minimal requirements
   static public $requires = array(
     'php'     => '5.4.0',
-    'toolkit' => '2.5.6',
-    'kirby'   => '2.5.6'
+    'toolkit' => '2.5.8',
+    'kirby'   => '2.5.8'
   );
 
   static public $instance;
@@ -269,7 +269,7 @@ class Panel {
 
     if(!$this->site->multilang()) {
       $language = null;
-    } else if($language = get('language') or $language = s::get('kirby_panel_lang')) {
+    } else if($language = get('_language') or $language = s::get('kirby_panel_lang')) {
       // $language is already set
     } else {
       $language = null;
@@ -494,7 +494,12 @@ class Panel {
 
   public function isLocal() {
     $localhosts = array('::1', '127.0.0.1', '0.0.0.0');
-    return (in_array(server::get('SERVER_ADDR'), $localhosts) || server::get('SERVER_NAME') == 'localhost');
+    return (
+      in_array(server::get('SERVER_ADDR'), $localhosts) ||
+      server::get('SERVER_NAME') == 'localhost' ||
+      str::endsWith(server::get('SERVER_NAME'), '.localhost') ||
+      str::endsWith(server::get('SERVER_NAME'), '.test')
+    );
   }
 
   public function notify($text) {
