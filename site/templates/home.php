@@ -16,13 +16,22 @@
         <meta name="twitter:description" content="<?= $site->description()->html() ?>">
         <meta name="twitter:image" content="<?= $site->page('/projects')->children()->first()->image()->url() ?>">
         <title><?= $site->title()->html() ?></title>
+        <?php if(!$site->custom_css()->empty()): ?>
+        <style><?= $site->custom_css() ?></style>
+        <?php endif; ?>
     <link href="/assets/css/main.4ff32673522d4c209b7e4c721a1f4635.css" rel="stylesheet"></head>
     <body>
         <div id="app"></div>
+        <?php if(!$site->custom_html()->empty()): ?>
+        <?= $site->custom_html() ?>
+        <?php endif; ?>
         <script type="text/javascript">
             window.Kirby = {}
             window.Kirby.pages = <?= json_encode($pages) ?>;
             window.Kirby.site = <?= json_encode($site_data) ?>;
         </script>
-    <script type="text/javascript" src="/assets/js/main.5109f552026d1ef685fe.js"></script></body>
+        <?php if(!$site->custom_js()->empty()): ?>
+        <script type="text/javascript"><?= $site->custom_js() ?></script>
+        <?php endif; ?>
+    <script type="text/javascript" src="/assets/js/main.962b8473238421aca3ef.js"></script></body>
 </html>

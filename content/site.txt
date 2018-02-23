@@ -11,3 +11,15 @@ Description: This is a website
 ----
 
 Copyright: Someone Somewhere (date: Year)
+
+----
+
+Custom-css: 
+
+----
+
+Custom-js: 
+
+----
+
+Custom-html: 

@@ -18,3 +18,15 @@ fields:
   copyright:
     label: Copyright
     type:  textarea
+
+  custom_css:
+    label: Custom CSS
+    type:  textarea
+
+  custom_js:
+    label: Custom JavaScript
+    type:  textarea
+
+  custom_html:
+    label: Custom HTML
+    type:  textarea
