@@ -62,7 +62,7 @@ export default {
 }
 
 html {
-  font-family: Helvetica, sans-serif;
+  font-family: $font-family;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: $font-size;

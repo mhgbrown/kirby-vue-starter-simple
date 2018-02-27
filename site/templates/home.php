@@ -19,7 +19,7 @@
         <?php if(!$site->custom_css()->empty()): ?>
         <style><?= $site->custom_css() ?></style>
         <?php endif; ?>
-    <link href="/assets/css/main.4ff32673522d4c209b7e4c721a1f4635.css" rel="stylesheet"></head>
+    <link href="/assets/css/main.70900fc4ce5517b7a12f0b67ec81086d.css" rel="stylesheet"></head>
     <body>
         <div id="app"></div>
         <?php if(!$site->custom_html()->empty()): ?>
@@ -33,5 +33,5 @@
         <?php if(!$site->custom_js()->empty()): ?>
         <script type="text/javascript"><?= $site->custom_js() ?></script>
         <?php endif; ?>
-    <script type="text/javascript" src="/assets/js/main.962b8473238421aca3ef.js"></script></body>
+    <script type="text/javascript" src="/assets/js/main.61af70679bc19f068e81.js"></script></body>
 </html>
