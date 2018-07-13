@@ -2,7 +2,7 @@
   <div class="projects">
     <div class="content-container">
       <ul>
-        <li v-for="subpage in subpages">
+        <li v-for="subpage in subpages" :key="subpage.uid">
           <router-link :to="{ name: subpage.type, params: { uid: subpage.uid } }">{{ subpage.title }}</router-link>
         </li>
       </ul>

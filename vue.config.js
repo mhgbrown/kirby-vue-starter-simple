@@ -10,6 +10,6 @@ module.exports = {
 
     config
       .output
-        .publicPath('/assets/')
+      .publicPath('/assets/')
   }
 }

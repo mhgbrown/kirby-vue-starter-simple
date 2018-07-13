@@ -3,8 +3,10 @@
   "description": "A simple starter Kiby and Vue",
   "version": "2.0.0",
   "author": "Morgan Brown <brown.mhg+git@gmail.com>",
+  "repository": "https://github.com/mhgbrown/kirby-vue-starter-simple.git",
+  "license": "MIT",
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "dev": "vue-cli-service build --dest assets --watch",
     "build": "vue-cli-service build --dest assets",
     "lint": "vue-cli-service lint"
   },
@@ -19,6 +21,7 @@
     "@vue/cli-plugin-eslint": "^3.0.0-beta.15",
     "@vue/cli-service": "^3.0.0-beta.15",
     "@vue/eslint-config-standard": "^3.0.0-rc.3",
+    "eslint": "^4.0.0",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
     "vue-template-compiler": "^2.5.16"
