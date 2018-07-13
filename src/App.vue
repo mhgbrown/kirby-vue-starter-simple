@@ -51,8 +51,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'node_modules/reset-css/_reset';
-
+@import 'node_modules/reset-css/sass/_reset';
 @import './assets/styles/base';
 
 * {
@@ -105,5 +104,77 @@ img {
 
 p {
   margin-bottom: 0.5rem;
+}
+
+i, em {
+  font-style: italic;
+}
+
+strong {
+  font-weight: bold;
+}
+
+blockquote {
+  padding: 0 1rem;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1rem;
+
+  &:before {
+    content: "“";
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  &:after {
+    content: "”";
+    position: absolute;
+    right: 0;
+    bottom: -0.5rem;
+  }
+}
+
+hr {
+  border-color: black;
+  margin: 1rem 0;
+  border-style: solid;
+}
+
+figure {
+  margin-bottom: 1rem;
+}
+
+figure.video {
+  height: 0;
+  padding-bottom: 56.25%;
+  position: relative;
+  background-color: lightgray;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+ul, ol {
+  li {
+    display: list-item;
+    padding-left: 0.75rem;
+    position: relative;
+
+    &:before {
+      content: '•';
+      position: absolute;
+      left: 0;
+    }
+
+    ul, ol {
+      margin-bottom: 1rem;
+    }
+  }
 }
 </style>

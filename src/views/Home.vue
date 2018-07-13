@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="content-container">
-      Hi
+      Hi 2.0
     </div>
   </div>
 </template>
