@@ -92,8 +92,8 @@ class Collection extends I implements Countable {
   }
 
   /**
-   * Checks if an element is in the collection by key. 
-   * 
+   * Checks if an element is in the collection by key.
+   *
    * @param string $key
    * @return boolean
    */
@@ -196,13 +196,13 @@ class Collection extends I implements Countable {
   public function shuffle() {
     $keys = array_keys($this->data);
     shuffle($keys);
-    
+
     $collection = clone $this;
     $collection->data = array();
     foreach($keys as $key) {
       $collection->data[$key] = $this->data[$key];
     }
-    
+
     return $collection;
   }
 
@@ -572,7 +572,7 @@ class Collection extends I implements Countable {
 
   /**
    * Improved var_dump() output
-   * 
+   *
    * @return array
    */
   public function __debuginfo() {
