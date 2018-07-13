@@ -29,6 +29,9 @@ $ npm run dev
 ```
 
 Create an asset build ready for production
+
+**⚠️ WARNING ⚠️** `/assets` is completely deleted
+
 ```bash
 $ npm run build
 ```
