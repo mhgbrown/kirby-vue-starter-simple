@@ -6,4 +6,4 @@ Intro: Yay! If you are seeing this, the installation of Kirby worked. :-)
 
 ----
 
-Text: I'm not sure we need this...
+Text: Hello World!

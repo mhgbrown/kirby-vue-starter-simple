@@ -1,18 +1,19 @@
 <template>
   <div class="home">
-    <div class="content-container">
-      Hi 2.0
-    </div>
+    <div class="content-container" v-html="page.text"></div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'home',
-  components: {
-  },
   data () {
     return {
+    }
+  },
+  computed: {
+    page () {
+      return this.$store.getters.getPageByUID('home')
     }
   }
 }

@@ -1,5 +1,6 @@
 /* eslint-disable indent */
 module.exports = {
+  baseUrl: '/assets/',
   chainWebpack: config => {
     config
       .plugin('html')
@@ -7,10 +8,6 @@ module.exports = {
         args[0].filename = '../site/templates/home.php'
         return args
       })
-
-    config
-      .output
-        .publicPath('/assets/')
 
     config.module
       .rule('fonts')

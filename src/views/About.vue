@@ -1,7 +1,6 @@
 <template>
   <div class="about">
-    <div class="content-container">
-    </div>
+    <div class="content-container" v-html="page.text"></div>
   </div>
 </template>
 
@@ -9,10 +8,13 @@
 
 export default {
   name: 'about',
-  components: {
-  },
   data () {
     return {
+    }
+  },
+  computed: {
+    page () {
+      return this.$store.getters.getPageByUID('about')
     }
   }
 }

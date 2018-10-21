@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import EventBus from './util/EventBus'
 import * as types from './store/mutation-types'
 
 export default {
@@ -22,29 +21,17 @@ export default {
   },
   created () {
     window.addEventListener('resize', this.onResize, true)
-    window.addEventListener('scroll', this.onScroll)
-    window.addEventListener('orientationchange', this.onOrientationChange)
 
     this.onResize()
   },
   destroyed () {
     window.removeEventListener('resize', this.onResize, true)
-    window.removeEventListener('scroll', this.onScroll)
-    window.removeEventListener('orientationchange', this.onOrientationChange)
   },
   methods: {
     onResize (event) {
       var windowWidth = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth
       this.$store.commit(types.UPDATE_APP, { field: 'tablet', value: windowWidth <= 960 })
       this.$store.commit(types.UPDATE_APP, { field: 'phone', value: windowWidth <= 480 })
-
-      EventBus.$emit('app.resize', event)
-    },
-    onScroll (event) {
-      EventBus.$emit('app.scroll', event)
-    },
-    onOrientationChange (event) {
-      EventBus.$emit('app.orientationchange', event)
     }
   }
 }

@@ -8,15 +8,13 @@
 export default {
   name: 'project',
   props: ['uid'],
-  components: {
+  data () {
+    return {
+    }
   },
   computed: {
     page () {
       return this.$store.getters.getPageByUID(this.uid)
-    }
-  },
-  data () {
-    return {
     }
   }
 }

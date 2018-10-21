@@ -13,8 +13,6 @@
 <script>
 export default {
   name: 'projects',
-  components: {
-  },
   computed: {
     subpages () {
       return this.$store.getters.getPagesByType('project')
