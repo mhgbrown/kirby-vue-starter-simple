@@ -1,6 +1,6 @@
 {
   "name": "kirby-vue-starter-simple",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "A simple starter Kiby and Vue",
   "author": "Morgan Brown <brown.mhg+git@gmail.com>",
   "scripts": {
@@ -10,19 +10,19 @@
   },
   "dependencies": {
     "reset-css": "^4.0.1",
-    "vue": "^2.5.16",
-    "vue-router": "^3.0.1",
+    "vue": "^2.5.17",
+    "vue-router": "^3.0.2",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.5",
-    "@vue/cli-plugin-eslint": "^3.0.5",
-    "@vue/cli-service": "^3.0.0",
-    "@vue/eslint-config-standard": "^3.0.5",
-    "eslint": "^5.0.0",
-    "node-sass": "^4.9.0",
-    "sass-loader": "^7.0.1",
-    "vue-template-compiler": "^2.5.16"
+    "@vue/cli-plugin-babel": "^3.2.0",
+    "@vue/cli-plugin-eslint": "^3.2.1",
+    "@vue/cli-service": "^3.2.0",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "eslint": "^5.9.0",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
+    "vue-template-compiler": "^2.5.17"
   },
   "browserslist": [
     "> 1%",
