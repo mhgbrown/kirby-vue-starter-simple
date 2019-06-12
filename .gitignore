@@ -7,35 +7,38 @@ Icon
 # Temporary files
 # ---------------
 
-/thumbs/*
-!/thumbs/index.html
-
-/site/cache/*
-!/site/cache/index.html
+/media/*
+!/media/index.html
 
 # -------------SECURITY-------------
 # NEVER publish these files via Git!
 # -------------SECURITY-------------
 
-# Kirby accounts
+# Cache Files
+# ---------------
+
+/site/cache/*
+!/site/cache/index.html
+
+# Accounts
 # ---------------
 
 /site/accounts/*
 !/site/accounts/index.html
 
-# Avatars
+# Sessions
 # ---------------
 
-/assets/avatars/*
-!/assets/avatars/index.html
+/site/sessions/*
+!/site/sessions/index.html
 
-# Node
+# License
 # ---------------
+/site/config/.license
 
-.DS_Store
-node_modules/
-npm-debug.log
-yarn-error.log
+# Vue
+# ---------------
+node_modules
 /dist
 
 # local env files
@@ -54,4 +57,4 @@ yarn-error.log*
 *.ntvs*
 *.njsproj
 *.sln
-*.sw*
+*.sw?

@@ -1,16 +1,16 @@
-Title: Someone Somewhere
+Title: Site Title
 
 ----
 
-Author: Someone Somewhere
+Author: 
 
 ----
 
-Description: This is a website
+Description: 
 
 ----
 
-Copyright: Someone Somewhere (date: Year)
+Copyright: 
 
 ----
 
@@ -23,3 +23,11 @@ Custom-js:
 ----
 
 Custom-html: 
+
+----
+
+Favicon: 
+
+----
+
+Share-image: 

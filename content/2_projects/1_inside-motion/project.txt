@@ -1,0 +1,21 @@
+Title: Inside Motion
+
+----
+
+Headline: Inside Motion / Bewegte Einblicke
+
+----
+
+Year: 2019
+
+----
+
+Tags: Vue, Kirby, Vuetify
+
+----
+
+Intro: Website for an exhibition at the Pharmacy Museum in Basel, Switzerland in collaboration with (link: http://common-interest.ch/ text: Common Interest).
+
+----
+
+Text: This project was grand and very cool to work on.

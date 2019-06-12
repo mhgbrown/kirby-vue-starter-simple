@@ -1,0 +1,8 @@
+headline: Projects
+layout: cards
+template: project
+image:
+  query: page.images.template("cover").first
+  ratio: 3/2
+  cover: true
+info: "{{ page.year }}"

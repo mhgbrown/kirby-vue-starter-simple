@@ -1,0 +1,12 @@
+title: Projects
+preset: pages
+icon: 🖼
+
+drafts:
+  extends: sections/projects
+  headline: Project Drafts
+
+listed:
+  extends: sections/projects
+  headline: Published Projects
+  layout: cards
