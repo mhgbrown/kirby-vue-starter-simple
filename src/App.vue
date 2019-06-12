@@ -7,6 +7,15 @@
     <router-view/>
   </div>
 </template>
+
+<script>
+export default {
+  beforeCreate () {
+    this.$store.dispatch('site/loadSite')
+  }
+}
+</script>
+
 <style lang="stylus">
 #app
   font-family 'Avenir', Helvetica, Arial, sans-serif
