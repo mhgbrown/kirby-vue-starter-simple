@@ -1,6 +1,6 @@
 /* eslint-disable indent */
 module.exports = {
-  baseUrl: '/assets/',
+  publicPath: '/assets/',
   chainWebpack: config => {
     config
       .plugin('html')

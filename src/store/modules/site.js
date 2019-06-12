@@ -10,7 +10,7 @@ const getters = {}
 const actions = {
   async loadSite ({ commit }) {
     const response = await kirby.getSite()
-    commit('setSite', { site: response.data.data })
+    commit('setSite', { site: response.data })
   }
 }
 

@@ -8,11 +8,19 @@ class Kirby {
       throw new Error(`KirbyClient authorization values are missing! email: ${email} password: ${password}`)
     }
 
-    const authorization = Buffer.from(`${email}:${password}`).toString('base64')
     this.http = axios.create({
       baseURL: '/rest',
-      headers: {
-        'Authorization': `Basic ${authorization}`
+      auth: {
+        username: email,
+        password: password
+      },
+      transformResponse (data) {
+        const json = JSON.parse(data)
+        if (json.status === 'error') {
+          throw new Error(json.message)
+        }
+
+        return json.data
       }
     })
   }
