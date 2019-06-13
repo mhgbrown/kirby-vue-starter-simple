@@ -1,4 +1,4 @@
-import shop from '../../api/shop'
+import kirby from '../../api/kirby'
 
 // initial state
 const state = {
@@ -6,26 +6,29 @@ const state = {
 }
 
 // getters
-const getters = {}
+const getters = {
+  getPage: (state) => (id) => {
+    return state.all.find(page => page.id === id)
+  }
+}
 
 // actions
 const actions = {
-  getAllProducts ({ commit }) {
-    shop.getProducts(products => {
-      commit('setProducts', products)
-    })
+  async loadPage ({ commit }, { id }) {
+    const pageId = id
+      // remove leading slash
+      .replace(/^\/+/, '')
+      // replace last slash with +
+      .replace(/\/([^/]*)$/, '+$1')
+    const response = await kirby.getPath(`/pages/${pageId}`)
+    commit('addPage', { page: response.data })
   }
 }
 
 // mutations
 const mutations = {
-  setProducts (state, products) {
-    state.all = products
-  },
-
-  decrementProductInventory (state, { id }) {
-    const product = state.all.find(product => product.id === id)
-    product.inventory--
+  addPage (state, { page }) {
+    state.all.push(page)
   }
 }
 

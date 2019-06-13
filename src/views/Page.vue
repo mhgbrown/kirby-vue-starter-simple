@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="page">
     <page-loader :id="id"/>
   </div>
 </template>
@@ -8,13 +8,15 @@
 import PageLoader from '@/components/PageLoader.vue'
 
 export default {
-  name: 'home',
+  name: 'page',
   components: {
     PageLoader
   },
   computed: {
     id () {
-      return 'home'
+      return this.$route.params.pathMatch
+        .replace(/^\/+/, '')
+        .toLowerCase()
     }
   }
 }

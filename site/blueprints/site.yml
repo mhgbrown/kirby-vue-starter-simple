@@ -8,10 +8,10 @@ sections:
     type: pages
     status: draft
 
-  # unlisted:
-  #   headline: Unlisted
-  #   type: pages
-  #   status: unlisted
+  unlisted:
+    headline: Unlisted
+    type: pages
+    status: unlisted
 
   published:
     headline: Published
