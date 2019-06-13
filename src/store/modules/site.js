@@ -9,8 +9,14 @@ const getters = {}
 // actions
 const actions = {
   async loadSite ({ commit }) {
-    const response = await kirby.getSite()
-    commit('setSite', { site: response.data })
+    const responses = await Promise.all([
+      kirby.getSite(),
+      kirby.getPath('/site/children')
+    ])
+
+    const site = responses[0].data
+    site.children = responses[1].data
+    commit('setSite', { site })
   }
 }
 
