@@ -32,18 +32,6 @@ class Kirby {
   getSite () {
     return this.getPath('/site')
   }
-
-  getAbout () {
-    return this.getPath('/pages/about')
-  }
-
-  getProjects () {
-    return this.getPath('/pages/projects')
-  }
-
-  getProject (id) {
-    return this.getPath(`/pages/projects+${id}`)
-  }
 }
 
 export default new Kirby()

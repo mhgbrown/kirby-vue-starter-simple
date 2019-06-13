@@ -20,8 +20,16 @@ const actions = {
       .replace(/^\/+/, '')
       // replace last slash with +
       .replace(/\/([^/]*)$/, '+$1')
-    const response = await kirby.getPath(`/pages/${pageId}`)
-    commit('addPage', { page: response.data })
+
+    // get page and its children, assimilate
+    const responses = await Promise.all([
+      kirby.getPath(`/pages/${pageId}`),
+      kirby.getPath(`/pages/${pageId}/children`)
+    ])
+
+    const page = responses[0].data
+    page.children = responses[1].data
+    commit('addPage', { page })
   }
 }
 

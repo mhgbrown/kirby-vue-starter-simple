@@ -25,11 +25,19 @@ export default {
     }
   },
   created () {
-    if (this.page) {
-      return
-    }
+    this.loadPage()
+  },
+  updated () {
+    this.loadPage()
+  },
+  methods: {
+    loadPage () {
+      if (this.page) {
+        return
+      }
 
-    this.$store.dispatch('pages/loadPage', { id: this.id })
+      this.$store.dispatch('pages/loadPage', { id: this.id })
+    }
   }
 }
 </script>
