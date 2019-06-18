@@ -7,6 +7,7 @@ Vue.use(Router)
 
 export default new Router({
   mode: 'history',
+  // so that routes are not based off 'publicPath' vue.config.js setting
   base: '/',
   routes: [
     {

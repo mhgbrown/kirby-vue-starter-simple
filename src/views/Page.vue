@@ -15,6 +15,7 @@ export default {
   computed: {
     id () {
       return this.$route.params.pathMatch
+        // remove leading slash(es)
         .replace(/^\/+/, '')
         .toLowerCase()
     }
