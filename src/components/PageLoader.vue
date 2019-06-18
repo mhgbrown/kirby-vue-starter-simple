@@ -1,8 +1,10 @@
 <template>
   <div class="page-loader">
-    <slot>
+    <slot name="loading" v-bind:page="page">
       <div v-if="!page">Loading...</div>
-      <div v-else v-html="page.content.text"/>
+    </slot>
+    <slot name="default" v-bind:page="page">
+      <div v-if="page" v-html="page.content.text"/>
     </slot>
   </div>
 </template>
