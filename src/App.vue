@@ -27,4 +27,16 @@ html
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
   text-align center
+  max-width 1280px
+  margin 0 auto
+
+img
+  max-width 100%
+  height auto
+
+ul
+  list-style-type none
+  padding 0
+  margin 0
+
 </style>

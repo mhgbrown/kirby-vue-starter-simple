@@ -5,7 +5,8 @@
         <div v-if="!page">Loading projects...</div>
       </template>
       <template v-slot:default="{ page }">
-        <ul v-if="page">{{ page.id }}
+        <h1>{{ page.title }}</h1>
+        <ul v-if="page">
           <li v-for="child in page.children" :key="child.id">
             <router-link :to="`/${child.id}`">{{ child.title }}</router-link>
           </li>
