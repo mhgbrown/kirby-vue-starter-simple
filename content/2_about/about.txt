@@ -1,0 +1,25 @@
+Title: About
+
+----
+
+Text: Morgan Brown is a Software Engineer based in Berlin, Germany
+
+----
+
+Address: 
+
+Examplestr. 12
+00000 Berlin
+Germany
+
+----
+
+Email: inbox@email.mhgbrown.is
+
+----
+
+Phone: +00123456789
+
+----
+
+Social: 

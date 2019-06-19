@@ -1,24 +1,34 @@
-import * as types from '../mutation-types'
+import kirby from '../../api/kirby'
 
-const state = {
-  site: {}
-}
+// initial state
+const state = {}
 
-const getters = {
+// getters
+const getters = {}
 
-}
-
+// actions
 const actions = {
+  async loadSite ({ commit }) {
+    const responses = await Promise.all([
+      kirby.getSite(),
+      kirby.getPath('/site/children')
+    ])
 
+    const site = responses[0].data
+    site.children = responses[1].data
+    commit('setSite', { site })
+  }
 }
 
+// mutations
 const mutations = {
-  [types.RECEIVE_SITE] (state, { site }) {
-    state.site = site
+  setSite (state, { site }) {
+    Object.assign(state, site)
   }
 }
 
 export default {
+  namespaced: true,
   state,
   getters,
   actions,

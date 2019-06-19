@@ -1,70 +1,47 @@
-import * as types from '../mutation-types'
+import kirby from '../../api/kirby'
 
+// initial state
 const state = {
-  pages: []
+  all: []
 }
 
+// getters
 const getters = {
-  getFileByURL: (state, getters) => (url, collection = state.pages) => {
-    let i = collection.length
-    while (i--) {
-      let j = collection[i].files.length
-      while (j--) {
-        if (collection[i].files[j].url === url) {
-          return collection[i].files[j]
-        }
-      }
-
-      let targetFile = getters.getFileByURL(url, collection[i].children)
-      if (targetFile) {
-        return targetFile
-      }
-    }
-  },
-  getPagesByType: (state, getters) => (type, collection = state.pages) => {
-    let results = []
-
-    if (!collection || !collection.length) {
-      return results
-    }
-
-    for (let i = 0; i < collection.length; i++) {
-      if (collection[i].type === type) {
-        results.push(collection[i])
-      }
-
-      let targetPages = getters.getPagesByType(type, collection[i].children)
-      results = results.concat(targetPages)
-    }
-
-    return results
-  },
-  getPageByUID: (state, getters) => (uid, collection = state.pages) => {
-    let i = collection.length
-    while (i--) {
-      if (collection[i].uid === uid) {
-        return collection[i]
-      }
-
-      let targetPage = getters.getPageByUID(uid, collection[i].children)
-      if (targetPage) {
-        return targetPage
-      }
-    }
+  getPage: (state) => (id) => {
+    return state.all.find(page => page.id === id)
   }
 }
 
+// actions
 const actions = {
+  async loadPage ({ commit }, { id }) {
+    const pageId = id
+      // remove leading slash
+      .replace(/^\/+/, '')
+      // replace last slash with +
+      .replace(/\/([^/]*)$/, '+$1')
 
+    // get page and its children, assimilate
+    const responses = await Promise.all([
+      kirby.getPath(`/pages/${pageId}`),
+      kirby.getPath(`/pages/${pageId}/children`)
+    ])
+
+    const page = responses[0].data
+    page.children = responses[1].data
+    commit('addPage', { page })
+  }
 }
 
+// mutations
 const mutations = {
-  [types.RECEIVE_PAGES] (state, { pages }) {
-    state.pages = pages
+  addPage (state, { page }) {
+    state.all.push(page)
   }
 }
 
 export default {
+  namespaced: true,
   state,
   getters,
   actions,

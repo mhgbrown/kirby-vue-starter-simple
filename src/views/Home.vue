@@ -1,29 +1,21 @@
 <template>
   <div class="home">
-    <div class="content-container" v-html="page.text"></div>
+    <page-loader :id="id"/>
   </div>
 </template>
 
 <script>
+import PageLoader from '@/components/PageLoader.vue'
+
 export default {
   name: 'home',
-  data () {
-    return {
-    }
+  components: {
+    PageLoader
   },
   computed: {
-    page () {
-      return this.$store.getters.getPageByUID('home')
+    id () {
+      return 'home'
     }
   }
 }
 </script>
-
-<style lang="scss">
-@import '../assets/styles/base';
-
-.home {
-  color: blue;
-  font-size: 4rem;
-}
-</style>

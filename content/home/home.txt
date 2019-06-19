@@ -2,8 +2,10 @@ Title: Home
 
 ----
 
-Intro: Yay! If you are seeing this, the installation of Kirby worked. :-)
+Text: 
 
-----
+# Switzerland and Schwyz
 
-Text: Hello World!
+It was so beautiful here that we thought it was a simulation! We drank some beer and twerked with the cows.
+
+(image: pano_20190615_125330.vr.jpg)

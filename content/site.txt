@@ -1,16 +1,16 @@
-Title: Someone Somewhere
+Title: Site Title
 
 ----
 
-Author: Someone Somewhere
+Author: Morgan Brown
 
 ----
 
-Description: This is a website
+Description: A demo of Kirby 3 and Vue working together
 
 ----
 
-Copyright: Someone Somewhere (date: Year)
+Copyright: 
 
 ----
 
@@ -23,3 +23,11 @@ Custom-js:
 ----
 
 Custom-html: 
+
+----
+
+Favicon: 
+
+----
+
+Share-image: 

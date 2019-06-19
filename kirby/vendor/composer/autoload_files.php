@@ -6,6 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'f485627b283286104bbc2461f512799f' => $vendorDir . '/getkirby/toolkit/bootstrap.php',
-    '4d43cb4a92fc9083dc76dd8887c0a0ef' => $baseDir . '/composer.php',
+    '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => $vendorDir . '/symfony/polyfill-mbstring/bootstrap.php',
+    '04c6c5c2f7095ccf6c481d3e53e1776f' => $vendorDir . '/mustangostang/spyc/Spyc.php',
+    '87988fc7b1c1f093da22a1a3de972f3a' => $baseDir . '/config/helpers.php',
+    '428e0a6316e676194f2283f47fbd1fc4' => $baseDir . '/config/aliases.php',
+    'd80b806b2b0bfc4457e5f164edcb5232' => $baseDir . '/config/tests.php',
 );

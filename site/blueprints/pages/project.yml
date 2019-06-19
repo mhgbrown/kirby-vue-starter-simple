@@ -1,0 +1,40 @@
+title: Project
+preset: page
+
+status:
+  draft: Draft
+  listed: Published
+
+fields:
+  headline:
+    type: text
+    width: 3/4
+    required: true
+  year:
+    type: number
+    min: 2000
+    default: 2018
+    required: true
+    width: 1/4
+  tags:
+    type: tags
+  intro:
+    type: textarea
+    size: small
+  text:
+    type: textarea
+    size: large
+
+sidebar:
+  cover:
+    type: files
+    headline: Cover
+    layout: cards
+    info: "{{ file.dimensions }}"
+    template: cover
+    min: 1
+    max: 3
+  gallery:
+    type: files
+    headline: Gallery
+    template: image

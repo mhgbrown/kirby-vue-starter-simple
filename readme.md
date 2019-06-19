@@ -1,6 +1,7 @@
 # Kirby Vue Starter Simple
 
-This is a **simple** starter for working with Kirby and Vue together.
+This is a **simple** starter for working with Kirby 3 and Vue together. The Vue app is served via Kirby's
+`home.php` template and communicates with the CMS via its API.
 
 ## What is Kirby?
 
@@ -15,13 +16,12 @@ A progressive, incrementally-adoptable JavaScript framework for building UI on t
 
 http://vuejs.org
 
+## Setup
+
+1. Serve Kirby locally somehow. [MAMP](https://www.mamp.info/en/) is a possibility for this.
+2. Create an "API" user within the panel and add its credentials to `.env`. The Vue app will use these to communicate with Kirby. Read more about Vue and environment variables [here](https://cli.vuejs.org/guide/mode-and-env.html).
+
 ## Usage
-
-### Server
-
-You'll need to serve Kirby locally somehow. [MAMP](https://www.mamp.info/en/) is a possibility for this.
-
-### Client
 
 Compile assets on the fly as you develop
 ```bash
