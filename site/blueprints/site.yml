@@ -20,7 +20,7 @@ sections:
 
   favicon:
     type: files
-    headline: Favicon
+    headline: Favicon (196 x 196, .png)
     layout: list
     info: "{{ file.dimensions }}"
     template: favicon
@@ -28,7 +28,7 @@ sections:
 
   share_image:
     type: files
-    headline: Share image
+    headline: Share image (1200 x 630)
     label: Share Image
     layout: list
     info: "{{ file.dimensions }}"

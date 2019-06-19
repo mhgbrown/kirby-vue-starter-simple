@@ -5,17 +5,19 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,height=device-height,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
         <meta name="description" content="<?= $site->description()->html() ?>">
-        <link rel="icon" href="">
+        <link rel="shortcut icon" type="image/png" href="<?= $site->files()->findBy('template', 'favicon')->url() ?>">
+        <link rel="shortcut icon" sizes="196x196" href="<?= $site->files()->findBy('template', 'favicon')->url() ?>">
+        <link rel="apple-touch-icon" href="<?= $site->files()->findBy('template', 'favicon')->url() ?>">
         <meta property="og:url" content="http://example.com">
         <meta property="og:title" content="<?= $site->title()->html() ?>" >
         <meta property="og:description" content="<?= $site->description()->html() ?>" >
-        <meta property="og:image" content="" >
+        <meta property="og:image" content="<?= $site->files()->findBy('template', 'share_image')->url() ?>" >
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="@example">
         <meta name="twitter:creator" content="@mhgbrown">
         <meta name="twitter:title" content="<?= $site->title()->html() ?>">
         <meta name="twitter:description" content="<?= $site->description()->html() ?>">
-        <meta name="twitter:image" content="">
+        <meta name="twitter:image" content="<?= $site->files()->findBy('template', 'share_image')->url() ?>">
         <title><?= $site->title()->html() ?></title>
         <?php if(!$site->custom_css()->empty()): ?>
         <style><?= $site->custom_css() ?></style>

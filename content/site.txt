@@ -2,11 +2,11 @@ Title: Site Title
 
 ----
 
-Author: 
+Author: Morgan Brown
 
 ----
 
-Description: 
+Description: A demo of Kirby 3 and Vue working together
 
 ----
 
