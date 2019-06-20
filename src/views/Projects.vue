@@ -5,12 +5,14 @@
         <div v-if="!page">Loading projects...</div>
       </template>
       <template v-slot:default="{ page }">
-        <h1>{{ page.title }}</h1>
-        <ul v-if="page">
-          <li v-for="child in page.children" :key="child.id">
-            <router-link :to="`/${child.id}`">{{ child.title }}</router-link>
-          </li>
-        </ul>
+        <template v-if="page">
+          <h1>{{ page.title }}</h1>
+          <ul>
+            <li v-for="child in page.children" :key="child.id">
+              <router-link :to="`/${child.id}`">{{ child.title }}</router-link>
+            </li>
+          </ul>
+        </template>
       </template>
     </page-loader>
   </div>
