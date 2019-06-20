@@ -14,7 +14,7 @@ Tags: Vue, Kirby, Vuetify
 
 ----
 
-Intro: Website for an exhibition at the Pharmacy Museum in Basel, Switzerland in collaboration with (link: http://common-interest.ch/ text: Common Interest).
+Intro: Website for an exhibition at the Pharmacy Museum in Basel, Switzerland in collaboration with (link: http://common-interest.ch/ text: Common Interest). Foo
 
 ----
 

@@ -8,10 +8,13 @@ return [
     'routes' => [
         [
             'pattern' => '/rest/(:all)',
-            'method'  => 'GET',
+            'method'  => 'GET|POST|DELETE|PATCH',
             'env'     => 'api',
             'action'  => function ($path = null) {
                 $kirby = kirby();
+
+                // Run the request through the Kirby instance and capture the
+                // response
                 $request = $kirby->request();
                 $render = $kirby->api()->render($path, $this->method(), [
                     'body'    => $request->body()->toArray(),
@@ -20,8 +23,9 @@ return [
                 ]);
                 $decoded = json_decode($render, true);
                 $p = 0;
+
                 // Kirbytags
-                // Kirbytext-ize any field whose key contains text
+                // Kirbytext-ize any field whose key contains "text"
                 function ktt($array) {
                     foreach ($array as $key => $value) {
                         if (is_array($value)) {
@@ -35,6 +39,7 @@ return [
                     }
                     return $array;
                 }
+
                 $decoded = ktt($decoded);
                 $encoded = json_encode($decoded, true);
                 return $encoded;
