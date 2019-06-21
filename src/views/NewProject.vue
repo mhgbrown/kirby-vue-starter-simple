@@ -1,6 +1,6 @@
 <template>
   <div class="project-new">
-    <form method="patch" actions="/rest/pages/projects/children" @submit.prevent="onSubmit">
+    <form ref="form" method="patch" actions="/rest/pages/projects/children" @submit.prevent="onSubmit">
       <p>
         <label>
           Title
@@ -11,6 +11,13 @@
         <label>
           Slug
           <input type="text" name="slug" v-model="payload.slug">
+        </label>
+      </p>
+      <p>
+        <label>
+          Headline
+          <textarea name="intro" v-model="payload.content.headline">
+          </textarea>
         </label>
       </p>
       <p>
@@ -27,7 +34,7 @@
           </textarea>
         </label>
       </p>
-      <input type="submit" value="save"/>
+      <input type="submit" value="save" :disabled="loading"/>
       <div v-if="error" style="color: red;">{{ error }}</div>
       <div v-if="success" style="color: green;">{{ success }}</div>
     </form>
@@ -43,48 +50,41 @@ export default {
     return {
       error: '',
       success: '',
+      loading: false,
       payload: {
         template: 'project',
         slug: '',
         content: {
           title: '',
           intro: '',
-          text: ''
+          text: '',
+          headline: ''
         }
       }
     }
   },
   methods: {
     async onSubmit () {
+      this.loading = true
+
       this.success = ''
       this.error = ''
+
       try {
-        await kirby.http.post('/pages/projects/children', this.payload)
+        // NB: create page
+        const response = await kirby.http.post('/pages/projects/children', this.payload)
+        // NB: publish page
+        // AFAICT you can't create and publish at the same time
+        await kirby.http.patch(`/pages/projects+${response.data.slug}/status`, { status: 'listed' })
+        await this.$store.dispatch('pages/loadPage', { id: 'projects' })
+        this.$refs.form.reset()
         this.success = 'Page created successfully!'
       } catch (error) {
         this.error = error.message
       }
+
+      this.loading = false
     }
   }
 }
 </script>
-
-// PATCH update REQUEST object
-// http://localhost:8888/api//pages/projects+new-test
-{
-    "headline": "f",
-    "year": 2018,
-    "tags": [],
-    "intro": "",
-    "text": ""
-}
-
-// POST New REQUEST object
-// http://localhost:8888/api/pages/projects/children
-{
-    "template": "project",
-    "slug": "new-test",
-    "content": {
-        "title": "New Test"
-    }
-}

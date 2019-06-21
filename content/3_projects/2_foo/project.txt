@@ -1,0 +1,21 @@
+Title: foo
+
+----
+
+Intro: foo
+
+----
+
+Text: foo
+
+----
+
+Headline: foo
+
+----
+
+Year: 2018
+
+----
+
+Tags: 

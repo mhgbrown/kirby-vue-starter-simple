@@ -29,6 +29,7 @@ const actions = {
 
     const page = responses[0].data
     page.children = responses[1].data
+    // TODO add or replace
     commit('addPage', { page })
   }
 }

@@ -32,8 +32,6 @@ sidebar:
     layout: cards
     info: "{{ file.dimensions }}"
     template: cover
-    min: 1
-    max: 3
   gallery:
     type: files
     headline: Gallery

@@ -1,5 +1,6 @@
 <template>
   <div class="projects">
+    <p><router-link to="/projects/new">New Project</router-link></p>
     <page-loader :id="id">
       <template v-slot:loading="{ page }">
         <div v-if="!page">Loading projects...</div>
