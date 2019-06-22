@@ -1,5 +1,13 @@
 import kirby from '../../api/kirby'
 
+const toPageId = function (id) {
+  return id
+    // remove leading slash
+    .replace(/^\/+/, '')
+    // replace last slash with +
+    .replace(/\/([^/]*)$/, '+$1')
+}
+
 // initial state
 const state = {
   all: []
@@ -9,27 +17,41 @@ const state = {
 const getters = {
   getPage: (state) => (id) => {
     return state.all.find(page => page.id === id)
+  },
+  getPageIndex: (state) => (id) => {
+    return state.all.findIndex(page => page.id === id)
   }
 }
 
 // actions
 const actions = {
-  async loadPage ({ commit }, { id }) {
-    const pageId = id
-      // remove leading slash
-      .replace(/^\/+/, '')
-      // replace last slash with +
-      .replace(/\/([^/]*)$/, '+$1')
-
-    // get page and its children, assimilate
-    const responses = await Promise.all([
-      kirby.getPath(`/pages/${pageId}`),
-      kirby.getPath(`/pages/${pageId}/children`)
-    ])
-
-    const page = responses[0].data
-    page.children = responses[1].data
-    commit('addPage', { page })
+  async loadPage ({ state, commit, getters }, { id }) {
+    const pageId = toPageId(id)
+    const response = await kirby.getPath(`/pages/${pageId}`)
+    const page = response.data
+    const index = getters.getPageIndex(pageId)
+    if (index === -1) {
+      commit('addPage', { page })
+    } else {
+      // Copy page so as not to mutate state outside of mutation
+      const existingPage = JSON.parse(JSON.stringify(state.all[index]))
+      page.children = existingPage.children
+      commit('replacePage', { page, index })
+    }
+  },
+  async loadPageChildren ({ state, commit, getters }, { id }) {
+    const pageId = toPageId(id)
+    const response = await kirby.getPath(`/pages/${pageId}/children`)
+    const children = response.data
+    const index = getters.getPageIndex(pageId)
+    if (index === -1) {
+      commit('addPage', { page: { id: pageId, children } })
+    } else {
+      // Copy page so as not to mutate state outside of mutation
+      const page = JSON.parse(JSON.stringify(state.all[index]))
+      page.children = children
+      commit('replacePage', { page, index })
+    }
   }
 }
 
@@ -37,6 +59,9 @@ const actions = {
 const mutations = {
   addPage (state, { page }) {
     state.all.push(page)
+  },
+  replacePage (state, { page, index }) {
+    state.all.splice(index, 1, page)
   }
 }
 

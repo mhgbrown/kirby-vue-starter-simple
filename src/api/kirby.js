@@ -32,6 +32,15 @@ class Kirby {
   getSite () {
     return this.getPath('/site')
   }
+
+  createChildPage (pageId, payload) {
+    return this.http.post(`/pages/${pageId}/children`, payload)
+  }
+
+  publishPage (pageId, payload = {}) {
+    const data = Object.assign({ status: 'listed' }, payload)
+    return this.http.patch(`/pages/${pageId}/status`, data)
+  }
 }
 
 export default new Kirby()

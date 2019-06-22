@@ -1,0 +1,40 @@
+# Changelog
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [3.1.0]
+### Added
+- Kirby client method to create page children
+- Kirby client method to publish page
+- `/projects/new` to create new projects
+
+### Changed
+- Page children are no longer loaded with pages
+
+### Fixed
+- Pages are replaced/updated if they have already been loaded
+
+## [3.0.1]
+### Fixed
+- Access to page title before page is loaded
+
+## [3.0.0]
+### Changed
+- Kirby updated to version 3
+- Vue CLI updated
+- Page data loaded via Kirby's API
+- General page view for any page
+- Share image and favicon configurable within site config
+
+### Removed
+- Old example site pages
+
+## [X.X.X]
+### Added
+### Changed
+### Deprecated
+### Removed
+### Fixed
+### Security
