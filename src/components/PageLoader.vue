@@ -13,7 +13,7 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'page',
+  name: 'page-loader',
   props: {
     id: {
       type: String,
@@ -33,12 +33,13 @@ export default {
     this.loadPage()
   },
   methods: {
-    loadPage () {
+    async loadPage () {
       if (this.page) {
         return
       }
 
-      this.$store.dispatch('pages/loadPage', { id: this.id })
+      await this.$store.dispatch('pages/loadPage', { id: this.id })
+      this.$store.dispatch('pages/loadPageChildren', { id: this.id })
     }
   }
 }
