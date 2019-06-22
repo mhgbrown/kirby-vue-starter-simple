@@ -1,6 +1,6 @@
 {
   "name": "kirby-vue-starter-simple",
-  "version": "3.0.1",
+  "version": "3.1.0",
   "description": "A simple starter Kiby and Vue",
   "author": "Morgan Brown <brown.mhg+git@gmail.com>",
   "scripts": {

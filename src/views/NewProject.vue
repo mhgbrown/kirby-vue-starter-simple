@@ -1,42 +1,43 @@
 <template>
   <div class="project-new">
-    <form ref="form" method="patch" actions="/rest/pages/projects/children" @submit.prevent="onSubmit">
+    <form ref="form" method="post" actions="/rest/pages/projects/children" @submit.prevent="onSubmit">
       <p>
         <label>
-          Title
+          <div>Title</div>
           <input type="text" name="title" v-model="payload.content.title">
         </label>
       </p>
       <p>
         <label>
-          Slug
+          <div>Slug</div>
           <input type="text" name="slug" v-model="payload.slug">
         </label>
       </p>
       <p>
         <label>
-          Headline
+          <div>Headline</div>
           <textarea name="intro" v-model="payload.content.headline">
           </textarea>
         </label>
       </p>
       <p>
         <label>
-          Intro
+          <div>Intro</div>
           <textarea name="intro" v-model="payload.content.intro">
           </textarea>
         </label>
       </p>
       <p>
         <label>
-          Text
+          <div>Text</div>
           <textarea name="text" v-model="payload.content.text">
           </textarea>
         </label>
       </p>
       <input type="submit" value="save" :disabled="loading"/>
-      <div v-if="error" style="color: red;">{{ error }}</div>
-      <div v-if="success" style="color: green;">{{ success }}</div>
+      <p v-if="loading">Working...</p>
+      <p v-if="error" style="color: red;">{{ error }}</p>
+      <p v-if="success" style="color: green;">{{ success }}</p>
     </form>
   </div>
 </template>
@@ -71,15 +72,27 @@ export default {
       this.error = ''
 
       try {
+        const pageId = 'projects'
         // NB: create page
-        const response = await kirby.http.post('/pages/projects/children', this.payload)
+        const response = await kirby.createChildPage(pageId, this.payload)
         // NB: publish page
         // AFAICT you can't create and publish at the same time
-        await kirby.http.patch(`/pages/projects+${response.data.slug}/status`, { status: 'listed' })
-        await this.$store.dispatch('pages/loadPage', { id: 'projects' })
+        await kirby.publishPage(`${pageId}+${response.data.slug}`)
+
+        // if there is no projects page, fetch it
+        const projectsPage = this.$store.getters['pages/getPage'](pageId)
+        if (!projectsPage) {
+          await this.$store.dispatch('pages/loadPage', { id: pageId })
+        }
+
+        // NB: re-fetch child pages
+        await this.$store.dispatch('pages/loadPageChildren', { id: pageId })
+
         this.$refs.form.reset()
         this.success = 'Page created successfully!'
       } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error(error)
         this.error = error.message
       }
 

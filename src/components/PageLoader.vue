@@ -1,10 +1,10 @@
 <template>
   <div class="page-loader">
     <slot name="loading" v-bind:page="page">
-      <div v-if="!page">Loading...</div>
+      <p v-if="!page">Loading...</p>
     </slot>
     <slot name="default" v-bind:page="page">
-      <div v-if="page" v-html="page.content.text"/>
+      <div v-if="page" v-html="content.text"/>
     </slot>
   </div>
 </template>
@@ -24,6 +24,9 @@ export default {
     ...mapGetters('pages', ['getPage']),
     page () {
       return this.getPage(this.id)
+    },
+    content () {
+      return this.page.content || {}
     }
   },
   created () {
@@ -38,7 +41,7 @@ export default {
         return
       }
 
-      await this.$store.dispatch('pages/loadPage', { id: this.id })
+      this.$store.dispatch('pages/loadPage', { id: this.id })
       this.$store.dispatch('pages/loadPageChildren', { id: this.id })
     }
   }

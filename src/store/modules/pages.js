@@ -33,7 +33,8 @@ const actions = {
     if (index === -1) {
       commit('addPage', { page })
     } else {
-      const existingPage = state.all[index]
+      // Copy page so as not to mutate state outside of mutation
+      const existingPage = JSON.parse(JSON.stringify(state.all[index]))
       page.children = existingPage.children
       commit('replacePage', { page, index })
     }
@@ -46,7 +47,8 @@ const actions = {
     if (index === -1) {
       commit('addPage', { page: { id: pageId, children } })
     } else {
-      const page = state.all[index]
+      // Copy page so as not to mutate state outside of mutation
+      const page = JSON.parse(JSON.stringify(state.all[index]))
       page.children = children
       commit('replacePage', { page, index })
     }
