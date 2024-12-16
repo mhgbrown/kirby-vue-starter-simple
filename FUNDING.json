@@ -1,10 +1,16 @@
 {
   "drips": {
-    "ethereum": {
-      "ownedBy": "0xe2E9b9B5d0757c26aB477A754788B19b60f2ed83"
-    },
     "sepolia": {
-      "ownedBy": "0xe2E9b9B5d0757c26aB477A754788B19b60f2ed83"
+      "ownedBy": "0x44f59dBC47EF6Fa8fcF4778fead562268Dc6C8AE"
+    },
+    "optimism-sepolia": {
+      "ownedBy": "0x44f59d8C47EF6Fa8fcF477Bfead562268Dc6C8AE"
+    },
+    "filecoin": {
+      "ownedBy": "0x44f59d8C47EF6Fa8fcF477Bfead562268Dc6C8AE" 
+    },
+    "ethereum": {
+      "ownedBy": "0xEF48994f97092fD22B8a880c47F053910788471b"
     }
   }
 }
